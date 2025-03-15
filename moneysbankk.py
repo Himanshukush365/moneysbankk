@@ -4,8 +4,8 @@ import motor.motor_asyncio  # Async MongoDB
 import asyncio
 import re
 
-# 🧐 Async MongoDB Setup
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017/")
+# 🤮 Async MongoDB Setup
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://Himanshu06:Himanshu@2007@cluster0.t8z2y.mongodb.net/billing_bot?retryWrites=true&w=majority")
 db = client["billing_bot"]
 users_collection = db["users"]
 
@@ -57,7 +57,7 @@ async def check_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
     balance = user["balance"] if user else 0
     await update.message.reply_text(f"💰 Your current balance: ₹{balance}")
 
-# 📋 View Balances
+# 👛 View Balances
 async def view_balances(update: Update, context: ContextTypes.DEFAULT_TYPE):
     users = await users_collection.find().to_list(length=100)
     if not users:
@@ -155,3 +155,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
