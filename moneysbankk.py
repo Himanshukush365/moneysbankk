@@ -159,3 +159,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+    import urllib.parse
+from motor.motor_asyncio import AsyncIOMotorClient
+
+username = "Himanshu06"
+password = "Himanshu@2007"
+encoded_username = urllib.parse.quote_plus(username)
+encoded_password = urllib.parse.quote_plus(password)
+
+MONGO_URI = f"mongodb+srv://{encoded_username}:{encoded_password}@cluster0.t8z2y.mongodb.net/billing_bot?retryWrites=true&w=majority"
+
+client = AsyncIOMotorClient(MONGO_URI)
+db = client["billing_bot"]
+users_collection = db["users"]
+
